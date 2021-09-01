@@ -38,3 +38,5 @@ MCAL\src\Timers.c
 
 MCAL\src\UART.c
 
+Smart Home\src\SmartHome.c
+

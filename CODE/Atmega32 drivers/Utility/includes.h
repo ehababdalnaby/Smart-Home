@@ -30,5 +30,6 @@
 #include "GLCD.h"
 #include "SERVO.h"
 #include <stdio.h>
+#include "SmartHome.h"
 
 #endif /* INCLUDES_H_ */

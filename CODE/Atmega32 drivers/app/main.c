@@ -14,25 +14,17 @@
 int main(){
 	KEYPAD_Init();
 	LCD_init();
-	u8 keyPressed, password[5],counter;
+	Project_Init();
+	u8 password[5]={0};
+	
 	while(1)
 	{
+		Get_Password(password);
 	
-		while(counter<4)
-		{
-			keyPressed=GetKey();
-
-			while(keyPressed!=0)
-			{
-				password[counter]=keyPressed;
-				disp_charXY(1,counter+1,keyPressed);
-				keyPressed=0;
-				counter++;
-			}	
-		}
-	
+		
 	}
 	return 0;
+	
 	
 	
 	
