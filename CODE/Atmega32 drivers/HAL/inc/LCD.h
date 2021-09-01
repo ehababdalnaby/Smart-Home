@@ -12,16 +12,15 @@
 #include "includes.h"
 			/*	LCD PINS LOCATION	*/
 #define data_pins (0xF0)
-#define ctr_pin   (0x0E)
+#define ctr_pin   (0x0C)
 			/*	LCD PORTS	*/
 #define data_port PORTA
-#define ctr_port  PORTB
+#define ctr_port  PORTA
 #define data_ddr  DDRA
-#define ctr_ddr   DDRB
+#define ctr_ddr   DDRA
 			/* LCD CONTROL PINS */
-#define LCD_RS	  PB1    //0->to select instruction mode  1->to select data mode
-#define LCD_RW    PB2   //0->to write in LCD  1->read from LCD
-#define LCD_E	  PB3  //
+#define LCD_RS	  PA2   //0->to select instruction mode  1->to select data mode
+#define LCD_E	  PA3  //
 			/* COMMAND LIST */
 #define CMD_CLR			0X01
 #define CMD_RET			0X02

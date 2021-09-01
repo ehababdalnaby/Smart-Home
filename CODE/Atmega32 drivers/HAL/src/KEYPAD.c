@@ -18,9 +18,9 @@ u8 key_CHAR[KEYPAD_ROW][KEYPAD_COL]=
 #elif KEYPAD_COL==3
 u8 key_CHAR[KEYPAD_ROW][KEYPAD_COL]=
 {
-	{'7','8','9'},
-	{'4','5','6'},
 	{'1','2','3'},
+	{'4','5','6'},
+	{'7','8','9'},
 	{'*','0','#'}
 };
 

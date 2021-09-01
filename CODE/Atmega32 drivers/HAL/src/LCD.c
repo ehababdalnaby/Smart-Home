@@ -15,7 +15,6 @@ void LCD_init(void)
 {
 	pinsDirection(&data_ddr, data_pins, OUTPUT);
 	pinsDirection(&ctr_ddr, ctr_pin, OUTPUT);
-	writePin(LCD_RW , LOW);
 	_delay_ms(40);
 	LCD_ret_Home();
 	LCD_send_cmd(CMD_CUR_INC);

@@ -11,25 +11,25 @@
 #include "includes.h"
 
 #define KEYPAD_ROW   4
-#define KEYPAD_COL   4
+#define KEYPAD_COL   3
 
-#define FIRSTOFROW   PD4
-#define LASTOFROW    PD7
+#define FIRSTOFROW   PB0
+#define LASTOFROW    PB3
 #define ROWOFFSET    FIRSTOFROW
 
-#define FIRSTOFCOL   PC3
-#define LASTOFCOL    PC6
+#define FIRSTOFCOL   PB4
+#define LASTOFCOL    PB6
 #define COLOFFSET    FIRSTOFCOL
 
-#define ROW_PINS	0xF0
-#define COL_PINS	0x78
-#define COL_PORT	PORTC
-#define ROW_PORT	PORTD
+#define ROW_PINS	0x0F
+#define COL_PINS	0x70
+#define COL_PORT	PORTB
+#define ROW_PORT	PORTB
 
-#define COL_DDR		DDRC
-#define ROW_DDR     DDRD
+#define COL_DDR		DDRB
+#define ROW_DDR     DDRB
 
-#define COLPINREG   PINC
+#define COLPINREG   PINB
 
 
 void KEYPAD_Init(void);
