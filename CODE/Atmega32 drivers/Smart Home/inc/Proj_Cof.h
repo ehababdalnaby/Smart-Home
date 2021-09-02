@@ -24,6 +24,6 @@
 #define SOIL_PUMP			PD4
 #define	FLAME_SENSOR		PD2
 #define FIREPUMP			PD3
-
+#define TV_PIN				PD7
 
 #endif /* PROJ_COF_H_ */

@@ -30,6 +30,7 @@ void Project_Init(void)
 	pinDirection(SOIL_PUMP,OUTPUT);
 	pinDirection(OUTERLIGHT,OUTPUT);
 	pinDirection(FIREPUMP,OUTPUT);
+	pinDirection(TV_PIN,OUTPUT);
 	
 	pinDirection(FLAME_SENSOR,INPUT);
 }
@@ -118,12 +119,12 @@ void AnalogSensors(void)
 	{
 		writePin(OUTERLIGHT,LOW);
 	}
-	
+	 	
 	temp();
-	itoa(LDR,tempstr,10);
-	MQTT_Publish("G/light",tempstr,strlen(tempstr));
-	_delay_ms(1000);
-	
+// 		itoa(LDR,tempstr,10);
+// 	 	MQTT_Publish("G/light",tempstr,strlen(tempstr));
+// 	 	_delay_ms(1000);
+// 	
 }
 
 void temp(void)

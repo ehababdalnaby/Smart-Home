@@ -19,7 +19,7 @@ void UART_INIT(u16 BaudRate)
 	UBRRL=BAUD_TEMP;
 	SETBit(UCSRB,TXEN);
 	SETBit(UCSRB,RXEN);
-	//SETBit(UCSRB,RXCIE);
+	SETBit(UCSRB,RXCIE);
 	UCSRC = (1 << URSEL) | (1 << UCSZ1) | (1 << UCSZ0);
 	GLOBAL_INT_EN();
 }
@@ -58,3 +58,5 @@ void	Uart_SendStr(u8* str){
 		ind++;
 	}
 }
+
+

@@ -22,51 +22,63 @@ u8 pktRecState			= 0; // 0 no packets, 1 publish type, 2 remLen
 
 u8 temp2  = 1;
 u8 tempstr[10]={0};
+u8 data = 0;
 int main()
 {
-	u8 data = 0;
 	
-		
+	
+	u8 TV_state=0;
 	UART_INIT(9600);
 	MQTT_Connect("1111");
 	_delay_ms(3000);
-	MQTT_Subscribe("NTI/Control");
+	MQTT_Subscribe("G/TV");
 	Project_Init();
 	sei();
 	u8 password[5]={0};
-	turnOnFireAlarm();	
+	turnOnFireAlarm();
 	while(1)
 	{
 		//Get_Password(password);
 		AnalogSensors();
-		MQTT_Publish("G/Temp",tempstr,strlen(tempstr));
-		_delay_ms(1000);
-// 		if(Uart_ReceiveByte_unblock(&data)){
-// 			if (pktRecState == 0 && data == 0x30)
-// 			{
-// 				mqttPktInd = 0;
-// 				mqttPkt[mqttPktInd++] = data;
-// 				pktRecState = 1; // we received the pub type
-// 			}
-// 			else if(pktRecState == 1){
-// 				mqttPkt[mqttPktInd++] = data;
-// 				pktRecState = 2;
-// 				remLen = data;
-// 			}
-// 			else if(pktRecState == 2){
-// 				mqttPkt[mqttPktInd++] = data;
-// 				if(mqttPktInd == remLen + 2){
-// 					pktRecState = 0;
-// 				}
-// 			}
-// 		}
-// 		if(mqttPkt[0] == 0x30){
-// 			if(mqttPkt[remLen + 1] == '1'){
-// 				Led_On(LED0);
-// 				}else if(mqttPkt[remLen + 1] == '0'){
-// 				Led_Off(LED0);
-// 			}
-// 		}
+		// 		MQTT_Publish("G/Temp",tempstr,strlen(tempstr));
+		// 		_delay_ms(1000);
+		// 		if(Uart_ReceiveByte_unblock(&data))
+		// 		{
+		// 			if (pktRecState == 0 && data == 0x30)
+		// 			{
+		// 				mqttPktInd = 0;
+		// 				mqttPkt[mqttPktInd++] = data;
+		// 				pktRecState = 1; // we received the pub type
+		// 			}
+		// 			else if(pktRecState == 1){
+		// 				mqttPkt[mqttPktInd++] = data;
+		// 				pktRecState = 2;
+		// 				remLen = data;
+		// 			}
+		// 			else if(pktRecState == 2){
+		// 				mqttPkt[mqttPktInd++] = data;
+		// 				if(mqttPktInd == remLen + 2){
+		// 					pktRecState = 0;
+		// 				}
+		// 			}
+		// 		}
+		// 		if(mqttPkt[0] == 0x30){
+		// 			if(mqttPkt[remLen + 1] == '1'){
+		// 				TV_state=1;
+		// 				}else if(mqttPkt[remLen + 1] == '0'){
+		// 				TV_state=0;
+		// 			}
+		// 		}
+		// 		if (TV_state==1)
+		// 		{
+		// 			SETBit(PORTD,7);
+		// 		}
+		// 		else
+		// 		{
+		// 			CLRBit(PORTD,7);
+		// 		}
+		
+		
 		
 	}
 }
@@ -77,3 +89,40 @@ ISR(INT0_vect)
 	ptrINT();
 }
 
+ISR(USART_RXC_vect)
+{
+	data=UDR;
+	if (pktRecState == 0 && data == 0x30)
+	{
+		mqttPktInd = 0;
+		mqttPkt[mqttPktInd++] = data;
+		pktRecState = 1; // we received the pub type
+	}
+	else if(pktRecState == 1)
+	{
+		mqttPkt[mqttPktInd++] = data;
+		pktRecState = 2;
+		remLen = data;
+	}
+	else if(pktRecState == 2)
+	{
+		mqttPkt[mqttPktInd++] = data;
+		if(mqttPktInd == remLen + 2)
+		{
+			pktRecState = 0;
+		}
+	}
+
+if(mqttPkt[0] == 0x30)
+{
+	if(mqttPkt[remLen + 1] == '1')
+	{
+		SETBit(PORTD,7);
+	}
+	else if(mqttPkt[remLen + 1] == '0')
+	{
+		CLRBit(PORTD,7);
+	}
+	
+}
+}
