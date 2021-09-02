@@ -14,6 +14,7 @@
 int main(){
 	Project_Init();
 	u8 password[5]={0};
+		
 	while(1)
 	{
 		//Get_Password(password);	

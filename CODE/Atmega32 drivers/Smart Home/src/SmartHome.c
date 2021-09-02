@@ -1,7 +1,7 @@
 ﻿/*
 * SmartHome.c
 *
-* Created: 01/09/2021 08:49:50 م
+* Created: 01/09/2021 08:49:50 
 *  Author: Administrator
 */
 #include "SmartHome.h"
@@ -10,17 +10,28 @@
 static u8 oldpassword[]="1234";
 static u8 trials=0;
 
+extern	void (*ptrINT)(void);
+
+void turnOnFireAlarm(void)
+{
+	Callback(FireAlarm);
+}
+
+
+
 void Project_Init(void)
 {
 	KEYPAD_Init();
 	LCD_init();
 	ADC_init();
-	
+	INT_init(INT_0, rising_edge);
+	GLOBAL_INT_EN();
 	
 	pinDirection(DOOR_LED,OUTPUT);
 	pinDirection(BUZZER,OUTPUT);
 	pinDirection(SOIL_PUMP,OUTPUT);
 	pinDirection(OUTERLIGHT,OUTPUT);
+	pinDirection(FIREPUMP,OUTPUT);
 }
 
 
@@ -92,6 +103,7 @@ void AnalogSensors(void)
 	disp_strXY(2,1,"Light = ");
 	disp_int(LDR);
 	disp_char('%');
+	//controlling planets irrigation 
 	if (soil<=30)//turn on pump
 	{
 		writePin(SOIL_PUMP,HIGH);
@@ -100,7 +112,7 @@ void AnalogSensors(void)
 	{
 		writePin(SOIL_PUMP,LOW);
 	}
-	
+	//controlling outer lights
 	if (LDR<30)//turn on lights
 	{
 		writePin(OUTERLIGHT,HIGH);
@@ -111,3 +123,12 @@ void AnalogSensors(void)
 	}
 	_delay_ms(100);
 }
+
+
+void FireAlarm(void)
+{
+	writePin(FIREPUMP,HIGH);
+	writePin(BUZZER,HIGH);	
+}
+
+

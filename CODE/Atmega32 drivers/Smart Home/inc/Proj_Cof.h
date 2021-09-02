@@ -22,7 +22,8 @@
 
 #define OUTERLIGHT			PD5
 #define SOIL_PUMP			PD4
-
+#define	FLAME_SENSOR		PD2
+#define FIREPUMP			PD3
 
 
 #endif /* PROJ_COF_H_ */

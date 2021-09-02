@@ -4,7 +4,16 @@
  * Created: 8/21/2021 6:01:45 PM
  *  Author: ehab2_phjirwi
  */ 
+
 #include "EXT_INT.h"
+#include <avr/interrupt.h>
+void (*ptrINT)(void);
+void Callback(void (*ptr)(void))
+{
+	ptrINT=ptr;
+}
+
+
 
 void INT_init(u8 int_num , u8 sense_control)
 {
@@ -31,4 +40,13 @@ void GLOBAL_INT_EN(void)
 void GLOBAL_INT_DE(void)
 {
 	writePins( &SREG,0x80,LOW );
+}
+
+
+
+
+
+ISR(INT0_vect)
+{
+	ptrINT();
 }
