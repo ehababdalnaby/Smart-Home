@@ -6,8 +6,10 @@
  */ 
 
 #include "EXT_INT.h"
-#include <avr/interrupt.h>
-void (*ptrINT)(void);
+
+
+
+void (*ptrINT)(void)=0;
 void Callback(void (*ptr)(void))
 {
 	ptrINT=ptr;
@@ -46,7 +48,3 @@ void GLOBAL_INT_DE(void)
 
 
 
-ISR(INT0_vect)
-{
-	ptrINT();
-}

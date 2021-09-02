@@ -19,5 +19,5 @@ void Project_Init(void);
 void AnalogSensors(void);
 void FireAlarm(void);
 void turnOnFireAlarm(void);
-
+void temp(void);
 #endif /* SMARTHOME_H_ */

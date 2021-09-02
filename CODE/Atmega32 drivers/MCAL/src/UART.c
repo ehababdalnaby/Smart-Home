@@ -6,7 +6,7 @@
  */ 
 #include "includes.h"
 #include <avr/interrupt.h>
-#define  F_CPU 16000000UL
+#define  F_CPU 8000000UL
 
 
 u8 gps[100];

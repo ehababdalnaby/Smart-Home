@@ -17,21 +17,20 @@ void turnOnFireAlarm(void)
 	Callback(FireAlarm);
 }
 
-
-
 void Project_Init(void)
 {
 	KEYPAD_Init();
 	LCD_init();
 	ADC_init();
-	INT_init(INT_0, rising_edge);
-	GLOBAL_INT_EN();
+	INT_init(INT_0,any_level);
 	
 	pinDirection(DOOR_LED,OUTPUT);
 	pinDirection(BUZZER,OUTPUT);
 	pinDirection(SOIL_PUMP,OUTPUT);
 	pinDirection(OUTERLIGHT,OUTPUT);
 	pinDirection(FIREPUMP,OUTPUT);
+	
+	pinDirection(FLAME_SENSOR,INPUT);
 }
 
 
@@ -81,11 +80,7 @@ void Check_Password(u8* password)
 	_delay_ms(500);
 	trials++;
 	disp_intXY(2,6,trials);
-	Get_Password(password);
-	
-	
-	
-	
+	Get_Password(password);	
 }
 
 void AnalogSensors(void)
@@ -121,14 +116,26 @@ void AnalogSensors(void)
 	{
 		writePin(OUTERLIGHT,LOW);
 	}
-	_delay_ms(100);
+	
+	temp();
+}
+
+void temp(void)
+{
+	u8 temp[60];
+	u8 hum[60];
+	disp_strXY(3,1,"Humid=     %RH");
+	disp_strXY(4,1,"temp=      Deg.c");
+	DHT_Represent(hum,temp);
+	disp_strXY(3,7,hum);
+	disp_strXY(4,6,temp);
+	_delay_ms(500);
 }
 
 
 void FireAlarm(void)
 {
-	writePin(FIREPUMP,HIGH);
-	writePin(BUZZER,HIGH);	
+	TGLBit(PORTD,3);
+	TGLBit(PORTB,7);	
 }
-
 

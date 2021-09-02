@@ -8,7 +8,7 @@
 
 #ifndef INCLUDES_H_
 #define INCLUDES_H_
-#define  F_CPU 16000000UL
+#define  F_CPU 8000000UL
 #include "bitMath.h"
 #include "dataTypes.h"
 #include "registers.h"
