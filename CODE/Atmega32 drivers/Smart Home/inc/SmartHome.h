@@ -20,4 +20,7 @@ void AnalogSensors(void);
 void FireAlarm(void);
 void turnOnFireAlarm(void);
 void temp(void);
+void IOTcharinput(u8 data);
+
+
 #endif /* SMARTHOME_H_ */

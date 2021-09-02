@@ -25,5 +25,8 @@
 #define	FLAME_SENSOR		PD2
 #define FIREPUMP			PD3
 #define TV_PIN				PD7
+#define FAN					PC3
+#define INNERLIGHT			PD6
+
 
 #endif /* PROJ_COF_H_ */

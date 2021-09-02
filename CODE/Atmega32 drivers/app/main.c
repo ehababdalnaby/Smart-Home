@@ -31,15 +31,18 @@ int main()
 	UART_INIT(9600);
 	MQTT_Connect("1111");
 	_delay_ms(3000);
-	MQTT_Subscribe("G/TV");
+	MQTT_Subscribe("G/devices");
 	Project_Init();
 	sei();
 	u8 password[5]={0};
 	turnOnFireAlarm();
+	AnalogSensors();
+	Get_Password(password);
 	while(1)
 	{
-		//Get_Password(password);
+		
 		AnalogSensors();
+		IOTcharinput(data);
 		// 		MQTT_Publish("G/Temp",tempstr,strlen(tempstr));
 		// 		_delay_ms(1000);
 		// 		if(Uart_ReceiveByte_unblock(&data))
@@ -91,6 +94,7 @@ ISR(INT0_vect)
 
 ISR(USART_RXC_vect)
 {
+	
 	data=UDR;
 	if (pktRecState == 0 && data == 0x30)
 	{
@@ -113,16 +117,10 @@ ISR(USART_RXC_vect)
 		}
 	}
 
-if(mqttPkt[0] == 0x30)
-{
-	if(mqttPkt[remLen + 1] == '1')
+	if(mqttPkt[0] == 0x30)
 	{
-		SETBit(PORTD,7);
-	}
-	else if(mqttPkt[remLen + 1] == '0')
-	{
-		CLRBit(PORTD,7);
+		data=mqttPkt[remLen + 1];
+		
 	}
 	
-}
 }

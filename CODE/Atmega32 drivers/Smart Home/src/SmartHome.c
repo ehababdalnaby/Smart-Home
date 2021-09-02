@@ -13,6 +13,9 @@ static u8 trials=0;
 extern	void (*ptrINT)(void);
 extern u8 temp2;
 extern	u8 tempstr[10];
+static u8 flag=0;
+
+
 void turnOnFireAlarm(void)
 {
 	Callback(FireAlarm);
@@ -31,6 +34,8 @@ void Project_Init(void)
 	pinDirection(OUTERLIGHT,OUTPUT);
 	pinDirection(FIREPUMP,OUTPUT);
 	pinDirection(TV_PIN,OUTPUT);
+	pinDirection(FAN,OUTPUT);
+	pinDirection(INNERLIGHT,OUTPUT);
 	
 	pinDirection(FLAME_SENSOR,INPUT);
 }
@@ -38,6 +43,9 @@ void Project_Init(void)
 
 void Get_Password(u8* password)
 {
+	
+	while(flag!=1)
+	{
 	LCD_CLEAR();
 	disp_strXY(2,1,"Enter password :");
 	u8 keyPressed=0, counter=0;
@@ -54,7 +62,9 @@ void Get_Password(u8* password)
 		}
 	}
 	Check_Password(password);
+	}
 }
+
 void Check_Password(u8* password)
 {
 	
@@ -66,6 +76,7 @@ void Check_Password(u8* password)
 		_delay_ms(3000);
 		writePin(DOOR_LED,LOW);//close door
 		trials=0;
+		flag=1;
 		return;
 	}
 	disp_intXY(2,1,trials);
@@ -153,3 +164,33 @@ void FireAlarm(void)
 	_delay_ms(1000);	
 }
 
+void IOTcharinput(u8 data)
+{
+	switch(data)
+	{
+		case '0':
+		writePin(TV_PIN,LOW);
+		break;
+		case '1':
+		writePin(TV_PIN,HIGH);
+		break;
+		case '2':
+		writePin(INNERLIGHT,HIGH);
+		break;
+		case '3':
+		writePin(INNERLIGHT,LOW);
+		break;
+		case '4':
+		writePin(FAN,HIGH);
+		break;
+		case '5':
+		writePin(FAN,LOW);
+		break;
+		case '6':
+		writePin(OUTERLIGHT,HIGH);
+		break;
+		case '7':
+		writePin(OUTERLIGHT,LOW);
+		break;
+	}
+}
