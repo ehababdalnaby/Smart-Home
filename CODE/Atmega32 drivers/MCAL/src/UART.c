@@ -5,12 +5,9 @@
  *  Author: ehab2_phjirwi
  */ 
 #include "includes.h"
-#include <avr/interrupt.h>
-#define  F_CPU 16000000UL
+#define  F_CPU 8000000UL
 
 
-u8 gps[100];
-u8 i=0;
 
 
 
@@ -38,4 +35,26 @@ u8 UART_RX(void)
 {
 	while(!GETBit(UCSRA,RXC));
 	return UDR;	
+}
+
+
+BOOL	Uart_ReceiveByte_unblock(u8* pData)
+{
+	BOOL result = FALSE;
+	if ( UCSRA & (1<<RXC) ){
+		(*pData) = UDR;
+		result =  TRUE;
+	}
+	else{
+		result = FALSE;
+	}
+	return result;
+}
+
+void	Uart_SendStr(u8* str){
+	u32 ind = 0;
+	while(str[ind] != 0){
+		UART_TX(str[ind]);
+		ind++;
+	}
 }

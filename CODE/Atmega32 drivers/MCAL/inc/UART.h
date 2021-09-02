@@ -35,5 +35,8 @@ enum {NORMAL_MODE,DOUBLE_SPEED}OPERATING_MODE;
 void UART_INIT(u16 BaudRate);
 void UART_TX(u8 data);
 u8 UART_RX(void);
+BOOL	Uart_ReceiveByte_unblock(u8* pData);
+void	Uart_SendStr(u8* str);
+
 #endif /* UART_H_ */
 

@@ -11,7 +11,7 @@ u8 proName[] = "MQTT";
 void sendUTFStr(u8* str){
 	UART_TX(0x00); // MSB = 0 because packet len < 256
 	UART_TX(strlen(str));
-	UART_TX(str);
+	Uart_SendStr(str);
 }
 void MQTT_Connect(u8* id){
 	u8 RL = (2 + strlen(proName)) + 1 + 1 + 2 + ( 2 + strlen(id));

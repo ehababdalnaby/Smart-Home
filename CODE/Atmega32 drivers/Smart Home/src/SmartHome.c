@@ -22,7 +22,7 @@ void Project_Init(void)
 	KEYPAD_Init();
 	LCD_init();
 	ADC_init();
-	INT_init(INT_0,any_level);
+	//INT_init(INT_0,any_level);
 	
 	pinDirection(DOOR_LED,OUTPUT);
 	pinDirection(BUZZER,OUTPUT);
@@ -85,6 +85,7 @@ void Check_Password(u8* password)
 
 void AnalogSensors(void)
 {
+	u8 tempstr[4]={0};
 	LCD_CLEAR();
 	u16 LDR=0;
 	u16 soil=0;
@@ -118,6 +119,9 @@ void AnalogSensors(void)
 	}
 	
 	temp();
+	itoa(LDR,tempstr,10);
+	MQTT_Publish("G/light",tempstr,strlen(tempstr));
+	_delay_ms(1000);
 }
 
 void temp(void)
