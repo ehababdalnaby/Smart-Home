@@ -91,9 +91,20 @@ void LCD_GOTXY(u8 row,u8 col)
 	}
 	else if(row==2)
 	{
-		LCD_send_cmd(DDRAM_ADD+0x40+col-1);	
+		LCD_send_cmd(0xC0+col-1);	
 	}
-	else{}
+	else if(row==3)
+	{
+		LCD_send_cmd(0x90+col-1);
+	}
+	else if(row==4)
+	{
+		LCD_send_cmd(0xD0+col-1);
+	}
+	else
+	{
+		
+	}
 	
 }
 

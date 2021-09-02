@@ -15,7 +15,7 @@ HAL/src/SERVO.d HAL/src/SERVO.o: ../HAL/src/SERVO.c ../HAL/inc/SERVO.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdio.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdarg.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h \
- ../Smart\ Home/inc/SmartHome.h
+ ../Smart\ Home/inc/SmartHome.h ../Smart\ Home/inc/Proj_Cof.h
 
 ../HAL/inc/SERVO.h:
 
@@ -78,3 +78,5 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h:
 
 ../Smart\ Home/inc/SmartHome.h:
+
+../Smart\ Home/inc/Proj_Cof.h:

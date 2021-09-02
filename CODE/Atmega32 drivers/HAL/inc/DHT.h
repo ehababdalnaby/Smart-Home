@@ -13,9 +13,9 @@
 #include "includes.h"
 
 
-#define DHT_PORT	PORTD
-#define DHT_DDR		DDRD
-#define DHT_PIN		PD7
+#define DHT_PORT	PORTC
+#define DHT_DDR		DDRC
+#define DHT_PIN		PC2
 
 
 void DHT_start(void);

@@ -12,27 +12,13 @@
 #endif
 
 int main(){
-	KEYPAD_Init();
-	LCD_init();
 	Project_Init();
 	u8 password[5]={0};
-	
 	while(1)
 	{
-		Get_Password(password);
-	
-		
+		//Get_Password(password);	
+		AnalogSensors();
 	}
-	return 0;
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }
 
 

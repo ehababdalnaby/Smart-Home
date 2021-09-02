@@ -16,7 +16,7 @@
 void Get_Password(u8*);
 void Check_Password(u8*);
 void Project_Init(void);
-
+void AnalogSensors(void);
 
 
 #endif /* SMARTHOME_H_ */

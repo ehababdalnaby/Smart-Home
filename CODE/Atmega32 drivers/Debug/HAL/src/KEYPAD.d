@@ -16,7 +16,7 @@ HAL/src/KEYPAD.d HAL/src/KEYPAD.o: ../HAL/src/KEYPAD.c \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdio.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdarg.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h \
- ../Smart\ Home/inc/SmartHome.h
+ ../Smart\ Home/inc/SmartHome.h ../Smart\ Home/inc/Proj_Cof.h
 
 ../HAL/inc/KEYPAD.h:
 
@@ -79,3 +79,5 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h:
 
 ../Smart\ Home/inc/SmartHome.h:
+
+../Smart\ Home/inc/Proj_Cof.h:

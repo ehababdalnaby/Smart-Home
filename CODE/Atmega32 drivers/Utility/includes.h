@@ -31,5 +31,6 @@
 #include "SERVO.h"
 #include <stdio.h>
 #include "SmartHome.h"
+#include "Proj_Cof.h"
 
 #endif /* INCLUDES_H_ */
