@@ -20,27 +20,26 @@ u8 mqttPktInd			= 0;
 u8 remLen				= 0;
 u8 pktRecState			= 0; // 0 no packets, 1 publish type, 2 remLen
 
-
+u8 temp2  = 1;
+u8 tempstr[10]={0};
 int main()
 {
 	u8 data = 0;
-	u8 tempstr[4]={0};
-	u8 temp2  = 1;	
+	
+		
 	UART_INIT(9600);
 	MQTT_Connect("1111");
-	_delay_ms(1000);
+	_delay_ms(3000);
 	MQTT_Subscribe("NTI/Control");
 	Project_Init();
-	//sei();
+	sei();
 	u8 password[5]={0};
 	turnOnFireAlarm();	
 	while(1)
 	{
 		//Get_Password(password);
 		AnalogSensors();
-		itoa(temp2,tempstr,10);
 		MQTT_Publish("G/Temp",tempstr,strlen(tempstr));
-		temp2++;
 		_delay_ms(1000);
 // 		if(Uart_ReceiveByte_unblock(&data)){
 // 			if (pktRecState == 0 && data == 0x30)

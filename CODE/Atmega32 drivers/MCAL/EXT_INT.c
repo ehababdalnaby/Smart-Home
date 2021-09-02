@@ -19,7 +19,7 @@ void Callback(void (*ptr)(void))
 
 void INT_init(u8 int_num , u8 sense_control)
 {
-	GICR|=(1<<int_num);
+	//GICR|=(1<<int_num);
 	switch(int_num)
 	{
 		case INT_2:
@@ -27,7 +27,9 @@ void INT_init(u8 int_num , u8 sense_control)
 		break;
 		
 		case INT_0:
-		MCUCR|=sense_control;
+		CLRBits(MCUCR,INT0_ISC_MSK);
+		SETBits(MCUCR,sense_control<<INT0_ISC_POS);
+		SETBit(GICR,INT_0);
 		break;
 		case INT_1:
 		MCUCR|=(sense_control<<2);

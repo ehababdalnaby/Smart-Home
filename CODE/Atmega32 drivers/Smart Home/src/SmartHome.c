@@ -5,13 +5,14 @@
 *  Author: Administrator
 */
 #include "SmartHome.h"
-
+#include "MQTT.h"
 
 static u8 oldpassword[]="1234";
 static u8 trials=0;
 
 extern	void (*ptrINT)(void);
-
+extern u8 temp2;
+extern	u8 tempstr[10];
 void turnOnFireAlarm(void)
 {
 	Callback(FireAlarm);
@@ -22,7 +23,7 @@ void Project_Init(void)
 	KEYPAD_Init();
 	LCD_init();
 	ADC_init();
-	//INT_init(INT_0,any_level);
+	INT_init(INT_0,any_level);
 	
 	pinDirection(DOOR_LED,OUTPUT);
 	pinDirection(BUZZER,OUTPUT);
@@ -122,6 +123,7 @@ void AnalogSensors(void)
 	itoa(LDR,tempstr,10);
 	MQTT_Publish("G/light",tempstr,strlen(tempstr));
 	_delay_ms(1000);
+	
 }
 
 void temp(void)
@@ -133,13 +135,20 @@ void temp(void)
 	DHT_Represent(hum,temp);
 	disp_strXY(3,7,hum);
 	disp_strXY(4,6,temp);
-	_delay_ms(500);
+	
+	MQTT_Publish("G/DHT",temp,strlen(temp));
+	_delay_ms(1000);
+	MQTT_Publish("G/hum",hum,strlen(hum));
+	_delay_ms(1000);
 }
 
 
 void FireAlarm(void)
 {
+	u8 msg[]="home on fire";
 	TGLBit(PORTD,3);
-	TGLBit(PORTB,7);	
+	TGLBit(PORTB,7);
+	MQTT_Publish("G/fire",msg,strlen(msg));
+	_delay_ms(1000);	
 }
 
