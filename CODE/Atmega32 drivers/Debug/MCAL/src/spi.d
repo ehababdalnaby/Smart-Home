@@ -15,7 +15,8 @@ MCAL/src/spi.d MCAL/src/spi.o: ../MCAL/src/spi.c ../MCAL/inc/SPI.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdio.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdarg.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h \
- ../Smart\ Home/inc/SmartHome.h ../Smart\ Home/inc/Proj_Cof.h
+ ../Smart\ Home/inc/SmartHome.h ../Smart\ Home/inc/Proj_Cof.h \
+ ../services/MQTT/MQTT.h ../MCAL/inc/uart.h
 
 ../MCAL/inc/SPI.h:
 
@@ -80,3 +81,7 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\
 ../Smart\ Home/inc/SmartHome.h:
 
 ../Smart\ Home/inc/Proj_Cof.h:
+
+../services/MQTT/MQTT.h:
+
+../MCAL/inc/uart.h:

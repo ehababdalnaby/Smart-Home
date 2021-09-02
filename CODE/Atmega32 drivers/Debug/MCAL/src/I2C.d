@@ -15,7 +15,8 @@ MCAL/src/I2C.d MCAL/src/I2C.o: ../MCAL/src/I2C.c ../MCAL/inc/I2C.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdio.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdarg.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h \
- ../Smart\ Home/inc/SmartHome.h ../Smart\ Home/inc/Proj_Cof.h
+ ../Smart\ Home/inc/SmartHome.h ../Smart\ Home/inc/Proj_Cof.h \
+ ../services/MQTT/MQTT.h ../MCAL/inc/uart.h
 
 ../MCAL/inc/I2C.h:
 
@@ -80,3 +81,7 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\
 ../Smart\ Home/inc/SmartHome.h:
 
 ../Smart\ Home/inc/Proj_Cof.h:
+
+../services/MQTT/MQTT.h:
+
+../MCAL/inc/uart.h:

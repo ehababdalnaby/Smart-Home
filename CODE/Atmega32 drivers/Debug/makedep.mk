@@ -38,5 +38,7 @@ MCAL\src\Timers.c
 
 MCAL\src\UART.c
 
+services\MQTT\MQTT.c
+
 Smart Home\src\SmartHome.c
 

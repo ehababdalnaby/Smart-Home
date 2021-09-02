@@ -15,6 +15,11 @@ extern	void (*ptrINT)(void);
 #endif
 
 int main(){
+	
+	UART_INIT(9600);
+	MQTT_Connect("1111");
+	_delay_ms(1000);
+	MQTT_Subscribe("NTI/Control");
 	Project_Init();
 	sei();
 	u8 password[5]={0};
